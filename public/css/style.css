@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f0f0f0;
+}
+h1 {
+    font-size: 5em;
+    color: #333;
+}
+p {
+    font-size: 1.5em;
+    color: #666;
+}
+.back-link {
+    cursor: pointer;
+    color: #333; /* Warna teks saat tidak dihover */
+    transition: color 0.3s; /* Efek transisi saat perubahan warna */
+}
+
+.back-link:hover {
+    color: #007bff; /* Warna teks saat dihover */
+}

@@ -1,0 +1,124 @@
+<div class="container mt-3">
+
+    <h2>Detail Contact</h2>
+
+    
+
+    <% if (!contact) { %>
+    <div class="alert alert-danger fw-bold" role="alert">
+        Data contact tidak ada. <br>
+        <a href="/contact" class="icon-link icon-link-hover alert-link fw-normal">&laquo; Kembali ke daftar contact</a>
+    </div>
+    <% } else { %>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3 text-center text-uppercase"><%= contact.nama %></h4>
+
+                        <div class="container text-center">
+                            <div class="d-flex flex-row justify-content-center align-items-center mb-1">
+                                <div class="p-1">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+                                <div class="p-1">
+                                    <p class="card-text"><%= contact.noHP %></p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex flex-row justify-content-center align-items-center mb-1">
+                                <div class="p-1">
+                                    <i class="bi bi-envelope-at"></i>
+                                </div>
+                                <div class="p-1">
+                                    <p class="card-text"><%= contact.email %></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        
+                        <h5 class="fw-semibold mb-3 mt-3"><i class="bi bi-person-fill"> Profile Mobile Legends</i></h5>
+
+                        <div class="container mb-3">
+                            <div class="d-flex flex-row">
+                                <div class="p-1">
+                                    <p class="fw-semibold">Nickname</p>
+                                    <p class="fw-semibold">ID (Server)</p>
+                                    <p class="fw-semibold">Highest Rank</p>
+                                </div>
+                                <div class="p-1">
+                                    <p>: 
+                                    <% if (contact.nickname) { %>
+                                        <%= contact.nickname %>
+                                    <% } else { %>
+                                        <i>none</i>
+                                    <% } %>
+                                    </p>
+                                    <p>: 
+                                    <% if (contact.gameID) { %>
+                                        <%= contact.gameID %>
+                                    <% } else { %>
+                                        <i>none</i>
+                                    <% } %>
+                                    ( 
+                                    <% if (contact.serverID) { %>
+                                        <%= contact.serverID %>
+                                    <% } else { %>
+                                        <i>none</i>
+                                    <% } %> 
+                                    )
+                                    </p>
+
+                                    <p>: 
+                                    <% if (!contact.highRank) { %>
+                                        <i>none</i>
+                                    <% } else if (contact.highRank < 0) { %>
+                                        <i>undefined</i>
+                                    <% } else if (contact.highRank < 25) { %>
+                                        Mythic <%= contact.highRank %> Star
+                                    <% } else if ( contact.highRank >= 25 & contact.highRank < 50) { %>
+                                        Mythic Honor <%= contact.highRank %> Star
+                                    <% } else if (contact.highRank >= 50 & contact.highRank < 100) { %>
+                                        Mythic Glory <%= contact.highRank %> Star
+                                    <% } else { %>
+                                        Mythic Immortal <%= contact.highRank %> Star
+                                    <% } %>
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <i>Note: Bro <%= contact.nickname %> adalah seorang 
+                                <% if (!contact.highRank) { %>
+                                    <b>POKE.</b> Btw, login jam berapa? biar gw off.
+                                <% } else if (contact.highRank < 0) { %>
+                                    <b>POKE.</b> Btw, login jam berapa? biar gw off.
+                                <% } else if (contact.highRank <= 50) { %>
+                                    <b>POKE.</b> Btw, login jam berapa? biar gw off.
+                                <% } else { %>
+                                    <b>SEPUH.</b> Btw, login jam berapa? biar gw login.
+                                <% } %>
+                            </i>
+
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <div class="p-1">
+                                <a href="/contact/edit/<%= contact.nama %>" class="btn btn-info badge"><h6 class="fw-semibold text-uppercase">ubah</h6></a>
+                                <a href="/contact/delete/<%= contact.nama %>" class="btn btn-danger badge" onclick="return confirm(`Hapus data contact <%= contact.nama %> ?`);"><h6 class="fw-semibold text-uppercase">hapus</h6></a>
+                            </div>
+                            <div class="p-1">
+                                <a href="/contact" class="icon-link icon-link-hover card-link d-block">&laquo; Kembali ke halaman daftar contact</a>
+                            </div>
+                        </div>
+
+                        
+                        
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

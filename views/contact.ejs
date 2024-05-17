@@ -1,0 +1,46 @@
+<div class="container mt-3">
+    <h2>Daftar Contact</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <% if (msg.length !== 0) { %>
+                <div class="alert alert-success" role="alert"><%= msg %></div>
+            <% } %>
+
+            <table class="table table-bordered">
+                <thead>
+                  <tr class="text-center">
+                    <th class="border border-light bg-secondary text-white rounded" scope="col">No</th>
+                    <th class="border border-light bg-secondary text-white rounded" scope="col">Nama</th>
+                    <th class="border border-light bg-secondary text-white rounded" scope="col">No HP</th>
+                    <th class="border border-light bg-secondary text-white rounded" scope="col">Email</th>
+                    <th class="border border-light bg-secondary text-white rounded" scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                    <% if (contacts.length === 0) { %>
+                        <tr>
+                            <td colspan="5">
+                                <div class="alert alert-danger fw-bold text-center" role="alert">Data contact masih kosong.</div>
+                            </td>
+                        </tr>
+                    <% } %>
+
+                    <% contacts.forEach((contact, i) => { i++ %>
+                        <tr class="text-center">
+                            <td class="border border-light bg-secondary-subtle rounded" scope="row"><%= i++ %></td>
+                            <td class="border border-light bg-secondary-subtle rounded"><%= contact.nama %></td>
+                            <td class="border border-light bg-secondary-subtle rounded"><%= contact.noHP %></td>
+                            <td class="border border-light bg-secondary-subtle rounded"><%= contact.email %></td>
+                            <td class="border border-light bg-secondary-subtle rounded">
+                                <a href="/contact/<%= contact.nama %>" class="btn btn-success badge rounded-pill"><i class="bi bi-info-circle"></i> detail</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+              <a href="/contact/add" class="btn btn-primary mb-2">Tambah Data Contact</a>
+        </div>
+    </div>
+</div>
